@@ -17,12 +17,12 @@ def git_workflow(commit_message: str):
     print("Adding changes...")
     run_command("git add .")
 
-    print(f"Committing changes with message: '{commit_message}'")
+    print(f"pommitting changes with message: '{commit_message}'")
     run_command(f'git commit -m "{commit_message}"')
 
-    print("Pushing to remote...")
+    print("pushing to remote...")
     run_command("git push origin main")
-    print("Push successful!")
+    print("pushed successfully")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
