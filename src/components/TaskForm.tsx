@@ -88,7 +88,7 @@ export default function TaskForm() {
 
   const onSubmit = async (data: TaskFormValues) => {
     await mutation.mutateAsync(data)
-    navigate('/') // go back to task list
+    navigate('/') // back to task list
   }
 
   if (isLoading) return <p>Loading task…</p>
@@ -134,7 +134,6 @@ export default function TaskForm() {
           </span>
         )}
       </label>
-
       <label>
         Priority
         <select {...register('priority')}>
