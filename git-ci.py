@@ -17,7 +17,7 @@ def git_workflow(commit_message: str):
     print("Adding changes...")
     run_command("git add .")
 
-    print(f"pommitting changes with message: '{commit_message}'")
+    print(f"committing changes with message: '{commit_message}'")
     run_command(f'git commit -m "{commit_message}"')
 
     print("pushing to remote...")
