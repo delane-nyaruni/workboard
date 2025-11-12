@@ -1,0 +1,36 @@
+{
+  "tasks": [
+    {
+      "id": "t1",
+      "title": "Design login flow",
+      "status": "Todo",
+      "assignee": "Thandi",
+      "priority": "High",
+      "dueDate": "2025-11-30",
+      "description": "Sketch wireframes for mobile"
+    },
+    {
+      "id": "t2",
+      "title": "API: tasks endpoints",
+      "status": "Doing",
+      "assignee": "Ayo",
+      "priority": "Medium",
+      "dueDate": "2025-11-20",
+      "description": "Implement CRUD with validation"
+    },
+    {
+      "id": "t3",
+      "title": "QA checklist",
+      "status": "Done",
+      "assignee": "Mia",
+      "priority": "Low",
+      "dueDate": "2025-10-15",
+      "description": "Draft basic acceptance criteria"
+    }
+  ],
+  "users": [
+    { "id": "u1", "name": "Thandi" },
+    { "id": "u2", "name": "Ayo" },
+    { "id": "u3", "name": "Mia" }
+  ]
+}
