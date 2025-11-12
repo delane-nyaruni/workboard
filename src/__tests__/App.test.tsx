@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import App from '../App'
+import App from '../Home'
 
 // Mock API client
 vi.mock('../api/client', () => ({

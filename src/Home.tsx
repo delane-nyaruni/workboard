@@ -2,8 +2,9 @@ import { useQuery } from '@tanstack/react-query'
 import { listTasks } from './api/client'
 import { TaskTable } from './components/TaskTable'
 import { useState } from 'react'
+import "./main.css";
 
-export default function App() {
+export default function Home() {
   const [search] = useState('')
   const { data, isLoading, isError } = useQuery({ queryKey: ['tasks'], queryFn: listTasks })
 

@@ -69,7 +69,7 @@ export function TaskTable({ tasks }: { tasks: Task[] }) {
         )
       case 'medium':
         return (
-          <span style={{ ...base, backgroundColor: '#fbbc05', color: '#000' }}>
+          <span style={{ ...base, backgroundColor: '#fbbc05' }}>
             Medium
           </span>
         )

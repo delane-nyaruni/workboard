@@ -1,0 +1,37 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #fff;
+  --text: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121212;
+    --text: #eee;
+  }
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+
+body[data-theme='dark'] {
+  --bg: #121212;
+  --text: #eee;
+}
+
+body[data-theme='light'] {
+  --bg: #fff;
+  --text: #000;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
