@@ -158,7 +158,7 @@ export default function TaskForm() {
         <textarea {...register('description')} rows={3} />
       </label>
 
-      <button type="submit" disabled={isSubmitting}>
+      <button type="submit" disabled={isSubmitting}  className="btn btn-primary">
         {isSubmitting ? 'Saving…' : 'Save'}
       </button>
     </form>

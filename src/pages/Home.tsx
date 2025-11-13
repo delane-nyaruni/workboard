@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
-import { listTasks } from './api/client'
-import { TaskTable } from './components/TaskTable'
+import { listTasks } from '@/api/client'
+import { TaskTable } from '@/components/TaskTable'
 import { useState } from 'react'
-import "./main.css";
+import "@/main.css";
 
 export default function Home() {
   const [search] = useState('')
@@ -22,14 +22,11 @@ export default function Home() {
 
   return (
     <div style={{ maxWidth: 960, margin: '0 auto', padding: 16 }}>
-      <header style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 16 }}>
-        <h1 style={{ margin: 0 }}>Mini Workboard</h1>
-       
-      </header>
+      <h1 className="display-inline"style={{ marginBottom: 16 }}>Mini Workboard</h1>
+      <button className="btn btn-primary float-end" style={{ marginBottom: 16 }} >
+        New Task
+      </button><br />
       <TaskTable tasks={filtered} />
-      <p style={{ marginTop: 24, color: '#666' }}>
-        This is a minimal starter. Add routes, forms, optimistic updates, validation, and tests per the brief.
-      </p>
     </div>
   )
 }

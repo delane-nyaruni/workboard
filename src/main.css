@@ -1,7 +1,7 @@
 /* src/index.css */
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 :root {
   --bg: #fff;
@@ -10,7 +10,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #121212;
+    --bg: #000562;
     --text: #eee;
   }
 }
@@ -22,7 +22,7 @@ body {
 
 
 body[data-theme='dark'] {
-  --bg: #121212;
+  --bg: #000562;
   --text: #eee;
 }
 

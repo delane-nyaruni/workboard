@@ -1,12 +1,12 @@
 import About from '@/pages/About'
-import Dashboard from '@/pages/Dashboard'
+import Home from '@/pages/Home'
 import { Routes, Route } from 'react-router-dom'
 
 export function AppRoutes() {
   return (
 
     <Routes>
-      <Route path="/" element={<Dashboard />} />
+      <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
     </Routes>
   )
