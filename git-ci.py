@@ -14,11 +14,13 @@ def run_command(command):
         sys.exit(1)
 
 def git_workflow(commit_message: str):
-    print("Adding changes...")
+    print("adding changes locally...")
     run_command("git add .")
 
     print(f"committing changes with message: '{commit_message}'")
     run_command(f'git commit -m "{commit_message}"')
+    print("commited to local repository successfully")
+    print("staging for cloud repository...")
 
     print("pushing to remote github repository...")
     run_command("git push origin main")
