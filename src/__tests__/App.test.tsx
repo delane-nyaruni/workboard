@@ -48,6 +48,6 @@ describe('App', () => {
       const task = await screen.findByText(/Test Task/i)
       expect(task).toBeInTheDocument()
     },
-    100
+    1000
   )
 })

@@ -4,8 +4,8 @@
 @tailwind utilities; */
 
 :root {
-  --bg: #fff;
-  --text: #000;
+  --bg: #fff !important;
+  --text: #000 !important;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,11 +27,64 @@ body[data-theme='dark'] {
 }
 
 body[data-theme='light'] {
-  --bg: #fff;
-  --text: #000;
+  /* --bg: #fff;
+  --text: #000; */
+
+    --bg: #000562;
+  --text: #eee;
 }
 
 body {
   background-color: var(--bg);
   color: var(--text);
+}
+
+.msgError {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f44336;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+.msgSuccess {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #36f485;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+
+body.dark-mode {
+    background-color: #1a2035 !important;
+    /* color: white !important; */
+        color: #1a2035 !important;
+
+}
+.text-color{
+    color: silver !important;
+}
+.theme-forced-color{
+    background:currentColor !important;
+}
+
+/* .container {
+    text-align: center;
+    margin-top: 50px;
+} */
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
 }
