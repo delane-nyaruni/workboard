@@ -13,7 +13,7 @@
       "id": "t2",
       "title": "API: tasks endpoints",
       "status": "Doing",
-      "assignee": "Ayo",
+      "assignee": "Ayanda",
       "priority": "Medium",
       "dueDate": "2025-11-20",
       "description": "Implement CRUD with validation"
@@ -26,123 +26,6 @@
       "priority": "Low",
       "dueDate": "2025-10-15",
       "description": "Draft basic acceptance criteria"
-    },
-    {
-      "id": "0095",
-      "title": "rt",
-      "status": "Todo",
-      "assignee": "srt",
-      "priority": "Medium",
-      "dueDate": "2025-11-07",
-      "description": "null"
-    },
-    {
-      "id": "797a",
-      "title": "er",
-      "status": "Todo",
-      "assignee": "aaer",
-      "priority": "Medium",
-      "dueDate": "2025-11-20",
-      "description": "yuiu"
-    },
-    {
-      "id": "bb74",
-      "title": "are",
-      "status": "Done",
-      "assignee": "ae",
-      "priority": "Medium",
-      "dueDate": "2025-11-21",
-      "description": "aer"
-    },
-    {
-      "id": "6448",
-      "title": "thas",
-      "status": "Todo",
-      "assignee": "dead",
-      "priority": "Medium",
-      "dueDate": "2025-11-14",
-      "description": ""
-    },
-    {
-      "id": "e0f6",
-      "title": "sd",
-      "status": "Doing",
-      "assignee": "rthsdds",
-      "priority": "Medium",
-      "dueDate": "2025-11-21",
-      "description": ""
-    },
-    {
-      "id": "531e",
-      "title": "dlkf",
-      "status": "Doing",
-      "assignee": "new form",
-      "priority": "High",
-      "dueDate": "2025-11-13",
-      "description": "done"
-    },
-    {
-      "id": "1cfa",
-      "title": "ds2",
-      "status": "Todo",
-      "assignee": "er",
-      "priority": "Medium",
-      "dueDate": "2025-11-20",
-      "description": ""
-    },
-    {
-      "id": "b52c",
-      "title": "lnl",
-      "status": "Done",
-      "assignee": "nyaru",
-      "priority": "Medium",
-      "dueDate": "2025-10-29",
-      "description": ""
-    },
-    {
-      "id": "daa6",
-      "title": "lnlk",
-      "status": "Done",
-      "assignee": "nyarun",
-      "priority": "Medium",
-      "dueDate": "2025-10-29",
-      "description": ""
-    },
-    {
-      "id": "f902",
-      "title": "lnlkj",
-      "status": "Done",
-      "assignee": "nyaruni",
-      "priority": "Medium",
-      "dueDate": "2025-10-29",
-      "description": "kj"
-    },
-    {
-      "id": "794a",
-      "title": "snd",
-      "status": "Done",
-      "assignee": "sd",
-      "priority": "High",
-      "dueDate": "2025-11-20",
-      "description": "alla"
-    },
-    {
-      "id": "44d0",
-      "title": "fifr",
-      "status": "Doing",
-      "assignee": "awe",
-      "priority": "Medium",
-      "dueDate": "2025-11-05",
-      "description": ""
-    },
-    {
-      "id": "c662",
-      "title": "lk",
-      "status": "Todo",
-      "assignee": "lk",
-      "priority": "Medium",
-      "dueDate": "2025-10-30",
-      "description": ""
     }
   ],
   "users": [

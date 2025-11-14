@@ -8,7 +8,7 @@ import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query'
 import { createTask, getTask, updateTask } from '@/api/client'
 import type { Task } from '@/types'
 
-// --- Zod schema for validation
+// --- Validation schema
 const TaskSchema = z.object({
   title: z.string().min(1, 'Title is required'),
   status: z.enum(['Todo', 'Doing', 'Done']),
@@ -25,7 +25,6 @@ export default function TaskForm() {
   const { id } = useParams<{ id: string }>()
   const queryClient = useQueryClient()
 
-  // React Hook Form setup
   const {
     register,
     handleSubmit,
@@ -43,7 +42,6 @@ export default function TaskForm() {
     },
   })
 
-  // Fetch existing task if editing
   const { data: taskData, isLoading } = useQuery<Task | undefined>({
     queryKey: ['task', id],
     queryFn: () => (id ? getTask(id) : Promise.resolve(undefined)),
@@ -54,13 +52,14 @@ export default function TaskForm() {
     if (taskData) reset(taskData)
   }, [taskData, reset])
 
-  // Mutation for create/update
+  // Mutations
   const mutation = useMutation({
     mutationFn: (formData: TaskFormValues) =>
       id ? updateTask(id, formData) : createTask(formData),
+
     onMutate: async (newTask) => {
       await queryClient.cancelQueries({ queryKey: ['tasks'] })
-      const previousTasks = queryClient.getQueryData<Task[]>(['tasks'])
+      const previous = queryClient.getQueryData<Task[]>(['tasks'])
 
       if (!id) {
         queryClient.setQueryData<Task[]>(['tasks'], (old = []) => [
@@ -68,15 +67,17 @@ export default function TaskForm() {
           { ...newTask, id: Date.now().toString() },
         ])
       }
-      return { previousTasks }
+      return { previous }
     },
-    onError: (_err, _newTask, context) => {
-      if (context?.previousTasks) queryClient.setQueryData(['tasks'], context.previousTasks)
+
+    onError: (_err, _new, ctx) => {
+      if (ctx?.previous) queryClient.setQueryData(['tasks'], ctx.previous)
     },
+
     onSettled: () => queryClient.invalidateQueries({ queryKey: ['tasks'] }),
   })
 
-  // --- Soft Popup Handlers ---
+  // Soft popups
   const showPopup = (id: string, msg: string, duration = 2000) => {
     const el = document.getElementById(id)
     if (!el) return
@@ -85,11 +86,10 @@ export default function TaskForm() {
     setTimeout(() => (el.style.display = 'none'), duration)
   }
 
-  const successPopup = (msg: string) => showPopup('successPopup', msg, 2000)
+  const successPopup = (msg: string) => showPopup('successPopup', msg)
   const errorPopup = (msg: string) => showPopup('errorPopup', msg, 3000)
 
   const onSubmit = async (data: TaskFormValues) => {
-    // extra soft validation (optional, redundant with zod)
     if (!data.title) return errorPopup('Title is required')
     if (!data.assignee) return errorPopup('Assignee is required')
     if (!data.dueDate) return errorPopup('Due date is required')
@@ -100,69 +100,78 @@ export default function TaskForm() {
     setTimeout(() => navigate('/'), 2000)
   }
 
-  if (isLoading) return <p>Loading task…</p>
+  if (isLoading) return <p className="text-center mt-4">Loading task…</p>
 
   return (
     <>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        style={{
-          maxWidth: 500,
-          margin: '0 auto',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 12,
-        }}
+        className="container mt-4 p-4 border rounded shadow-sm"
+        style={{ maxWidth: 600 }}
       >
-        <h2>{id ? 'Edit Task' : 'New Task'}</h2>
+        <h3 className="mb-4">{id ? 'Edit Task' : 'New Task'}</h3>
 
-        <label>
-          Title
-          <input {...register('title')} />
-          {errors.title && <span role="alert" style={{ color: 'red' }}>{errors.title.message}</span>}
-        </label>
+        {/* Title */}
+        <div className="mb-3">
+          <label className="form-label">Title</label>
+          <input className="form-control" {...register('title')} />
+          {errors.title && (
+            <div className="text-danger small mt-1">{errors.title.message}</div>
+          )}
+        </div>
 
-        <label>
-          Status
-          <select {...register('status')}>
+        {/* Status */}
+        <div className="mb-3">
+          <label className="form-label">Status</label>
+          <select className="form-select" {...register('status')}>
             <option value="Todo">Todo</option>
             <option value="Doing">Doing</option>
             <option value="Done">Done</option>
           </select>
-        </label>
+        </div>
 
-        <label>
-          Assignee
-          <input {...register('assignee')} />
-          {errors.assignee && <span role="alert" style={{ color: 'red' }}>{errors.assignee.message}</span>}
-        </label>
+        {/* Assignee */}
+        <div className="mb-3">
+          <label className="form-label">Assignee</label>
+          <input className="form-control" {...register('assignee')} />
+          {errors.assignee && (
+            <div className="text-danger small mt-1">
+              {errors.assignee.message}
+            </div>
+          )}
+        </div>
 
-        <label>
-          Priority
-          <select {...register('priority')}>
+        {/* Priority */}
+        <div className="mb-3">
+          <label className="form-label">Priority</label>
+          <select className="form-select" {...register('priority')}>
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
           </select>
-        </label>
+        </div>
 
-        <label>
-          Due Date
-          <input type="date" {...register('dueDate')} />
-          {errors.dueDate && <span role="alert" style={{ color: 'red' }}>{errors.dueDate.message}</span>}
-        </label>
+        {/* Due date */}
+        <div className="mb-3">
+          <label className="form-label">Due Date</label>
+          <input type="date" className="form-control" {...register('dueDate')} />
+          {errors.dueDate && (
+            <div className="text-danger small mt-1">{errors.dueDate.message}</div>
+          )}
+        </div>
 
-        <label>
-          Description
-          <textarea {...register('description')} rows={3} />
-        </label>
+        {/* Description */}
+        <div className="mb-3">
+          <label className="form-label">Description</label>
+          <textarea className="form-control" rows={3} {...register('description')} />
+        </div>
 
-        <div style={{ display: 'flex', gap: 8 }}>
-          <button type="submit" disabled={isSubmitting} className="btn btn-primary">
+        {/* Buttons */}
+        <div className="d-flex gap-2 mt-3">
+          <button type="submit" className="btn btn-primary btn-block" disabled={isSubmitting}>
             {isSubmitting ? 'Saving…' : 'Save'}
           </button>
-
-          <button type="button" onClick={() => navigate(-1)} className="btn btn-secondary">
+          <button type="button" className="btn btn-secondary  btn-block" onClick={() => navigate(-1)}>
             Cancel
           </button>
         </div>
