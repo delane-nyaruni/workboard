@@ -341,10 +341,10 @@ export function TaskTable({ tasks: initialTasks }: { tasks: Task[] }) {
               // Display mode
               <>
                 <h2>{selectedTask.title}</h2>
-                <p>Status: **{selectedTask.status}**</p>
-                <p>Assignee: {selectedTask.assignee}</p>
-                <p>Priority: {selectedTask.priority}</p>
-                <p>Due Date: {new Date(selectedTask.dueDate).toLocaleDateString()}</p>
+                <p>Status: <span className='m-2'>{selectedTask.status}</span></p>
+                <p>Assignee: <span className='m-2'>{selectedTask.assignee}</span></p>
+                <p>Priority: <span className='m-2'>{selectedTask.priority}</span></p>
+                <p>Due Date: <span className='m-2'>{new Date(selectedTask.dueDate).toLocaleDateString()}</span></p>
 
                 <div style={{ display: 'flex', gap: 12, marginTop: 16 }}>
                   <button onClick={() => startEdit(selectedTask)} style={{ padding: '6px 12px', background: '#1e90ff', color: '#fff', borderRadius: 4 }}>
