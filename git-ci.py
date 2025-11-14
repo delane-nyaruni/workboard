@@ -20,9 +20,9 @@ def git_workflow(commit_message: str):
     print(f"committing changes with message: '{commit_message}'")
     run_command(f'git commit -m "{commit_message}"')
 
-    print("pushing to remote...")
+    print("pushing to remote github repository...")
     run_command("git push origin main")
-    print("pushed successfully")
+    print("pushed to github online successfully")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
